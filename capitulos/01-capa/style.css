@@ -113,33 +113,3 @@
     flex-wrap: wrap;
   }
 }
-
-.cover .frame {
-  grid-template-rows: auto 1fr auto auto;
-}
-#talk-plan-open {
-  width: fit-content;
-  padding: 4px 0;
-  margin-top: 7px;
-  border: 0;
-  background: transparent;
-  color: var(--cover-red);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  font: 500 14px var(--mono);
-}
-
-.talk-plan {
-  font-size: 17px;
-}
-.talk-plan ol {
-  padding-left: 0;
-  list-style: none;
-}
-.talk-plan li {
-  padding: 6px 0;
-  border-bottom: 1px solid var(--line);
-}
-.talk-plan p {
-  margin-bottom: 0;
-}

@@ -59,18 +59,8 @@
   min-height: 8em;
   font-size: 16px;
 }
-.brief details {
-  padding: 8px 13px;
-  border-top: 1px solid #857367;
-  font-size: 0.85em;
-}
-.brief summary {
-  cursor: pointer;
-  font-weight: 700;
-}
-.brief details p {
-  padding-top: 6px;
-}
+
+
 @media (max-width: 700px) {
   .live-layout {
     grid-template-columns: 1fr;

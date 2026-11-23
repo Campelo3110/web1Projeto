@@ -33,9 +33,10 @@
 }
 #conceito .frame {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-areas: 'chapter chapter chapter' 'intro intro intro' 'cycle cycle cycle' 'human assistant verify';
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  grid-template-areas: 'chapter chapter' 'intro intro' 'cycle cycle' 'photo human' 'photo assistant' 'photo verify';
   column-gap: clamp(14px, 3vw, 45px);
+  row-gap: 10px;
 }
 #conceito .chapter {
   grid-area: chapter;
@@ -55,6 +56,23 @@
   color: var(--accent);
   font: 700 clamp(15px, 2.8vw, 39px) var(--display);
 }
+.method-figure {
+  grid-area: photo;
+  align-self: stretch;
+  margin: 0;
+}
+.method-figure img {
+  display: block;
+  width: 100%;
+  height: clamp(190px, 31vh, 330px);
+  object-fit: cover;
+}
+.method-figure figcaption {
+  padding-top: 5px;
+  color: var(--muted);
+  font-size: 0.62em;
+  line-height: 1.4;
+}
 .cycle span + span::before {
   content: '→';
   margin-right: 12px;
@@ -63,12 +81,16 @@
 @media (max-width: 700px) {
   #conceito .frame {
     grid-template-columns: 1fr;
-    grid-template-areas: 'chapter' 'intro' 'cycle' 'human' 'assistant' 'verify';
+    grid-template-areas: 'chapter' 'intro' 'cycle' 'photo' 'human' 'assistant' 'verify';
   }
   .method-intro {
     grid-template-columns: 1fr;
   }
   .method-notes p {
     padding-bottom: 12px;
+  }
+  .method-figure img {
+    height: auto;
+    max-height: 300px;
   }
 }

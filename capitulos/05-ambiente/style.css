@@ -4,7 +4,7 @@
 .setup-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  grid-template-areas: 'title title' 'files notes';
+  grid-template-areas: 'title title' 'files photo' 'notes notes';
   gap: clamp(14px, 3vw, 49px);
 }
 .setup-notes {
@@ -22,6 +22,23 @@
   grid-area: files;
   border: 1px solid var(--accent);
   color: var(--accent);
+}
+.setup-photo {
+  grid-area: photo;
+  min-width: 0;
+  margin: 0;
+  align-self: stretch;
+}
+.setup-photo img {
+  display: block;
+  width: 100%;
+  height: clamp(190px, 28vh, 300px);
+  object-fit: cover;
+}
+.setup-photo figcaption {
+  padding-top: 4px;
+  color: var(--muted);
+  font-size: 0.62em;
 }
 .file-tree > p:first-child {
   padding: 8px 14px;
@@ -53,6 +70,10 @@
 @media (max-width: 700px) {
   .setup-layout {
     grid-template-columns: 1fr;
-    grid-template-areas: 'title' 'files' 'notes';
+    grid-template-areas: 'title' 'files' 'photo' 'notes';
+  }
+  .setup-photo img {
+    height: auto;
+    max-height: 320px;
   }
 }

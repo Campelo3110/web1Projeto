@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz@1,6..72&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 :root {
   --paper: #f4efe5;
@@ -8,7 +8,7 @@
   --muted: #62574d;
   --display: 'Archivo', Arial, sans-serif;
   --body: 'DM Sans', Arial, sans-serif;
-  --reading: 'Newsreader', Georgia, serif;
+  --reading: var(--body);
   --mono: 'IBM Plex Mono', 'Courier New', monospace;
   --rail: 48px;
 }
@@ -192,7 +192,8 @@ dialog p {
 }
 .chapter,
 .small {
-  font: 500 clamp(13px, 1.08vw, 16px)/1.4 var(--mono);
+  font: 700 clamp(13px, 1.08vw, 16px)/1.4 var(--body);
+  letter-spacing: -0.02em;
 }
 .chapter {
   margin: 0 0 clamp(14px, 2.7vh, 28px);
