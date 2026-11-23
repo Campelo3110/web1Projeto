@@ -1,0 +1,129 @@
+.prompt-lesson {
+  background: #29221e;
+  color: #f8eee0;
+  --muted: #dec8b8;
+}
+.prompt-lesson .frame {
+  padding-block: clamp(22px, 4vh, 49px);
+}
+.prompt-heading {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px 24px;
+  align-items: end;
+}
+.prompt-heading .chapter {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+.prompt-heading h2 {
+  max-width: 22ch;
+  font-size: clamp(31px, 4.1vw, 60px);
+}
+.prompt-switch {
+  display: flex;
+  border: 1px solid #ad9385;
+}
+.prompt-switch button {
+  padding: 8px 12px;
+  border: 0;
+  background: transparent;
+  font: 500 15px var(--mono);
+}
+.prompt-switch button + button {
+  border-left: 1px solid #ad9385;
+}
+.prompt-switch button[aria-pressed='true'] {
+  background: #f3ccb6;
+  color: #2c211b;
+}
+.prompt-switch button:focus-visible {
+  outline-offset: -3px;
+}
+.prompt-board {
+  margin-top: clamp(14px, 3vh, 31px);
+}
+.prompt-quote {
+  padding: clamp(10px, 2vw, 27px) 0;
+  font: italic clamp(28px, 4.05vw, 62px)/1.12 var(--reading);
+  color: #ffb79e;
+  border-top: 1px solid #a88572;
+}
+.prompt-criteria {
+  display: grid;
+  grid-template-columns: 0.78fr 1.05fr 1.17fr;
+  margin: 0;
+  border-block: 1px solid #a88572;
+}
+.prompt-criteria div {
+  padding: 10px clamp(8px, 1.4vw, 18px) 10px 0;
+}
+.prompt-criteria div + div {
+  padding-left: clamp(8px, 1.4vw, 18px);
+  border-left: 1px solid #786258;
+}
+.prompt-criteria dt {
+  font: 500 clamp(13px, 1.22vw, 18px) var(--mono);
+  color: #e3c5b2;
+}
+.prompt-criteria dd {
+  margin: 5px 0 0;
+  font: 700 clamp(18px, 1.96vw, 30px)/1.22 var(--display);
+}
+#prompt-vago dd {
+  color: #d3b8a7;
+  font-weight: 500;
+}
+.prompt-criteria strong {
+  color: #ffb79e;
+}
+.prompt-criteria kbd {
+  font: 500 0.8em var(--mono);
+  padding: 0 4px;
+  border: 1px solid currentColor;
+}
+.prompt-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px 16px;
+  margin-top: 11px;
+  font-size: 0.9em;
+}
+#prompt-open {
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
+  color: #ffb79e;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+#prompt-full h3 {
+  margin: 0;
+  font-size: 22px;
+}
+#prompt-full p {
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+@media (max-width: 620px) {
+  .prompt-heading {
+    grid-template-columns: 1fr;
+  }
+  .prompt-switch {
+    width: fit-content;
+  }
+  .prompt-criteria {
+    grid-template-columns: 1fr;
+  }
+  .prompt-criteria div + div {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid #786258;
+  }
+  .prompt-criteria div {
+    padding-block: 7px;
+  }
+}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Publicar e testar / Vibe Coding</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="../../capitulo.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body class="chapter-page">
+    <a class="back-to-deck" href="../../index.html#publicacao" hidden>Voltar à apresentação</a>
+    <main>
+      <section class="slide" id="publicacao" aria-labelledby="publicar">
+        <div class="frame">
+          <p class="chapter">12 / Da pasta para o navegador</p>
+          <div class="release-layout">
+            <header>
+              <h2 id="publicar">Seu teste final começa no link público.</h2>
+              <p class="lead">
+                No GitHub Pages, envie os três arquivos à raiz de um repositório que possa ser
+                publicado. Em Settings → Pages, escolha publicar a partir da branch principal e da
+                pasta raiz.
+              </p>
+              <p>
+                <a
+                  href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Configuração oficial do GitHub Pages ↗</a
+                >
+              </p>
+            </header>
+            <ol class="release-path" aria-label="Caminho para publicação">
+              <li>Repositório</li>
+              <li>Settings</li>
+              <li>Pages</li>
+              <li>Branch + raiz</li>
+            </ol>
+            <fieldset class="checklist">
+              <legend>Antes de enviar o link</legend>
+              <label
+                ><input type="checkbox" /> A data e o local conferem com o aviso da escola.</label
+              >
+              <label
+                ><input type="checkbox" /> As três atividades aparecem, e o filtro funciona.</label
+              >
+              <label
+                ><input type="checkbox" /> A página cabe no celular e funciona por teclado.</label
+              >
+              <label
+                ><input type="checkbox" /> O endereço abre em aba anônima, sem segredos nos
+                arquivos.</label
+              >
+              <output id="check-count" aria-live="polite"></output>
+            </fieldset>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

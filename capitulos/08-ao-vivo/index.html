@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Demonstração ao vivo / Vibe Coding</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="../../capitulo.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body class="chapter-page">
+    <a class="back-to-deck" href="../../index.html#ao-vivo" hidden>Voltar à apresentação</a>
+    <main>
+      <section class="slide live" id="ao-vivo" aria-labelledby="demo">
+        <div class="frame">
+          <p class="chapter">08 / Pausa para a demonstração</p>
+          <div class="live-layout">
+            <header>
+              <h2 id="demo">Agora, no editor.</h2>
+              <p class="lead">
+                Construir uma página da Feira de Ciências que ajude estudantes a encontrar o local e
+                filtrar as oficinas.
+              </p>
+            </header>
+            <ol class="ordered live-order">
+              <li>Abra o agente em uma pasta vazia e envie o pedido.</li>
+              <li>Revise os arquivos propostos e abra a página no navegador.</li>
+              <li>Teste o filtro, o teclado e a largura de 360 px. Registre o que falhou.</li>
+            </ol>
+            <div class="brief">
+              <div class="brief-top">
+                <h3>Prompt inicial</h3>
+                <button id="copy" type="button">Copiar</button>
+              </div>
+              <p id="live-prompt">
+                Crie uma página em português para estudantes consultarem a Feira de Ciências. Use
+                index.html, style.css e script.js, sem dependências. Inclua data, local e três
+                atividades fictícias, duas delas oficinas. Adicione um botão “Só oficinas” que
+                alterna entre a lista filtrada e a lista completa. O botão deve funcionar com Enter,
+                e a página deve caber em 360 px sem rolagem horizontal. Ao final, liste os arquivos
+                alterados e os testes manuais que devo fazer.
+              </p>
+              <textarea
+                id="copy-fallback"
+                aria-label="Prompt inicial para copiar"
+                hidden
+                readonly
+              ></textarea>
+              <details>
+                <summary>Roteiro de apoio</summary>
+                <p>
+                  A demonstração acontece na ferramenta escolhida. Se a geração demorar, volte ao
+                  laboratório local e mostre o filtro pronto. Comece mostrando os três arquivos no
+                  editor. Compare a lista antes e depois do filtro. Depois peça um contador de
+                  atividades visíveis. Se sobrar tempo, peça um aviso quando nenhum resultado
+                  corresponder ao filtro.
+                </p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

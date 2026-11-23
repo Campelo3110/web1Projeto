@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>O primeiro prompt / Vibe Coding</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="../../capitulo.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body class="chapter-page">
+    <a class="back-to-deck" href="../../index.html#prompt" hidden>Voltar à apresentação</a>
+    <main>
+      <section class="slide prompt-lesson" id="prompt" aria-labelledby="pedir">
+        <div class="frame">
+          <header class="prompt-heading">
+            <p class="chapter">06 / Escrever o pedido</p>
+            <h2 id="pedir">O que a IA teria de adivinhar?</h2>
+            <div class="prompt-switch" role="group" aria-label="Comparar pedidos">
+              <button type="button" data-prompt="vago" aria-pressed="true">Vago</button>
+              <button type="button" data-prompt="detalhado" aria-pressed="false">Detalhado</button>
+            </div>
+          </header>
+
+          <div id="prompt-vago" class="prompt-board">
+            <p class="prompt-quote">“Faz um site legal para a feira.”</p>
+            <dl class="prompt-criteria">
+              <div>
+                <dt>Público</dt>
+                <dd>Para quem?</dd>
+              </div>
+              <div>
+                <dt>Conteúdo</dt>
+                <dd>O que precisa aparecer?</dd>
+              </div>
+              <div>
+                <dt>Aceite</dt>
+                <dd>Como testar?</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div id="prompt-detalhado" class="prompt-board" hidden>
+            <p class="prompt-quote">“Crie uma página da Feira de Ciências para estudantes.”</p>
+            <dl class="prompt-criteria">
+              <div>
+                <dt>Público</dt>
+                <dd>Estudantes</dd>
+              </div>
+              <div>
+                <dt>Conteúdo</dt>
+                <dd>Data, local e três atividades</dd>
+              </div>
+              <div>
+                <dt>Aceite</dt>
+                <dd>
+                  <strong>360 px</strong> sem rolagem lateral<br />Filtro acionado com
+                  <kbd>Enter</kbd>
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="prompt-footer">
+            <p id="prompt-note" role="status">
+              O pedido vago deixa público, conteúdo e testes em aberto.
+            </p>
+            <button id="prompt-open" type="button" aria-haspopup="dialog" hidden>
+              Ler pedido completo
+            </button>
+          </div>
+          <dialog id="prompt-full" aria-labelledby="prompt-full-title">
+            <div class="index-top">
+              <h3 id="prompt-full-title">Pedido detalhado</h3>
+              <form method="dialog"><button type="submit">Fechar</button></form>
+            </div>
+            <p>
+              Crie uma página da Feira de Ciências para estudantes. Mostre data, local e três
+              atividades. Use HTML, CSS e JavaScript. Em 360 px, a lista deve caber sem rolagem
+              horizontal. O botão “Só oficinas” deve funcionar com Enter.
+            </p>
+          </dialog>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

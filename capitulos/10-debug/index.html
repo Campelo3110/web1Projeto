@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Encontrar e corrigir erros / Vibe Coding</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="../../capitulo.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body class="chapter-page">
+    <a class="back-to-deck" href="../../index.html#debug" hidden>Voltar à apresentação</a>
+    <main>
+      <section class="slide dark debug" id="debug" aria-labelledby="erro">
+        <div class="frame">
+          <p class="chapter">10 / Laboratório · execução local</p>
+          <div class="debug-layout">
+            <header>
+              <h2 id="erro">Por que o botão não reage?</h2>
+            </header>
+            <ol class="ordered debug-steps">
+              <li>Reproduza: clique no botão e anote o que esperava ver.</li>
+              <li>
+                Leia o primeiro erro do console. Compare o seletor com o <code>id</code> do HTML.
+              </li>
+              <li>Corrija o seletor, recarregue e repita o teste.</li>
+            </ol>
+            <div class="console">
+              <div class="console-bar" role="group" aria-label="Versão do código">
+                <button type="button" data-debug="erro" aria-pressed="true">Com erro</button>
+                <button type="button" data-debug="certo" aria-pressed="false">Corrigido</button>
+              </div>
+              <pre><code id="bug-code"></code></pre>
+              <div class="console-run">
+                <button id="run" type="button">Executar exemplo</button
+                ><output id="bug-output" aria-live="polite">Pronto para executar.</output>
+              </div>
+            </div>
+          </div>
+          <div id="debug-fixture" hidden>
+            <button type="button" id="botao-teste">Botão de teste</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

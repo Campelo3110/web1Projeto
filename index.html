@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Apresentação de Internet e Sociedade sobre Vibe Coding, do primeiro pedido ao site publicado."
+    />
+    <title>Vibe Coding / Internet e Sociedade</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body class="has-controls">
+    <a class="skip" href="#conteudo">Ir para o capítulo</a>
+    <nav class="controls" aria-label="Controles da apresentação">
+      <div class="control-inner">
+        <button id="open-index" type="button">Sumário</button>
+        <div class="navigation">
+          <button id="previous" type="button" aria-label="Voltar seção">←</button>
+          <output id="position" aria-label="Seção atual"></output>
+          <button id="next" type="button" aria-label="Avançar seção">→</button>
+        </div>
+        <button id="present" type="button" aria-pressed="true">Modo leitura</button>
+        <button id="fullscreen" type="button" aria-pressed="false">Tela cheia</button>
+      </div>
+      <progress id="progress" aria-label="Progresso da apresentação"></progress>
+    </nav>
+    <dialog id="index" aria-labelledby="index-title">
+      <div class="index-top">
+        <h2 id="index-title">Sumário</h2>
+        <form method="dialog"><button type="submit">Fechar</button></form>
+      </div>
+      <p>Use as setas para mudar de capítulo. Esc fecha o sumário.</p>
+      <ol id="index-links">
+        <li><a href="capitulos/01-capa/index.html" data-id="capa">Capa e roteiro</a></li>
+        <li><a href="capitulos/02-provocacao/index.html" data-id="provocacao">A provocação</a></li>
+        <li>
+          <a href="capitulos/02-sociedade/index.html" data-id="sociedade">Internet e Sociedade</a>
+        </li>
+        <li>
+          <a href="capitulos/03-conceito/index.html" data-id="conceito">O que é Vibe Coding</a>
+        </li>
+        <li>
+          <a href="capitulos/04-abordagens/index.html" data-id="abordagens"
+            >Abordagens e ferramentas</a
+          >
+        </li>
+        <li>
+          <a href="capitulos/05-ambiente/index.html" data-id="ambiente">Ambiente e arquivos</a>
+        </li>
+        <li><a href="capitulos/06-prompt/index.html" data-id="prompt">O primeiro prompt</a></li>
+        <li>
+          <a href="capitulos/07-laboratorio/index.html" data-id="laboratorio"
+            >Laboratório das três camadas</a
+          >
+        </li>
+        <li>
+          <a href="capitulos/08-ao-vivo/index.html" data-id="ao-vivo">Demonstração ao vivo</a>
+        </li>
+        <li><a href="capitulos/09-ajustes/index.html" data-id="ajustes">Pedir alterações</a></li>
+        <li>
+          <a href="capitulos/10-debug/index.html" data-id="debug">Encontrar e corrigir erros</a>
+        </li>
+        <li><a href="capitulos/11-revisao/index.html" data-id="revisao">Revisão e segurança</a></li>
+        <li>
+          <a href="capitulos/12-publicacao/index.html" data-id="publicacao">Publicar e testar</a>
+        </li>
+        <li>
+          <a href="capitulos/13-perguntas/index.html" data-id="perguntas">Conclusão e perguntas</a>
+        </li>
+      </ol>
+    </dialog>
+    <main id="conteudo" tabindex="-1">
+      <noscript
+        ><p><a href="capitulos/01-capa/index.html">Abrir a capa</a></p></noscript
+      >
+    </main>
+  </body>
+</html>

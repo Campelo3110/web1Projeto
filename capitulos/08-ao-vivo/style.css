@@ -1,0 +1,79 @@
+.live {
+  background: #8c2f25;
+  color: #fff1e2;
+  --line: #e59680;
+  --muted: #ffe0cd;
+}
+.live-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  grid-template-areas: 'intro brief' 'route brief';
+  gap: 12px clamp(22px, 5vw, 85px);
+  align-items: start;
+}
+.live-layout header {
+  grid-area: intro;
+  align-self: end;
+}
+.live-order {
+  grid-area: route;
+  border-top: 1px solid var(--line);
+  margin-top: 0;
+  padding-top: 9px;
+  font-size: 0.85em;
+}
+.brief {
+  grid-area: brief;
+  background: #f6eee0;
+  color: #2c251e;
+}
+.brief-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 13px;
+  border-bottom: 1px solid #857367;
+}
+.brief h3 {
+  margin: 0;
+  font: 500 15px var(--mono);
+}
+.brief button {
+  background: transparent;
+  border: 1px solid currentColor;
+  padding: 4px 7px;
+  font: 500 14px var(--mono);
+}
+.brief button:hover {
+  background: #2c251e;
+  color: #f6eee0;
+}
+#live-prompt {
+  padding: clamp(12px, 2vw, 22px);
+  font-size: 0.9em;
+}
+#copy-fallback {
+  margin: 0 12px 12px;
+  width: calc(100% - 24px);
+  min-height: 8em;
+  font-size: 16px;
+}
+.brief details {
+  padding: 8px 13px;
+  border-top: 1px solid #857367;
+  font-size: 0.85em;
+}
+.brief summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+.brief details p {
+  padding-top: 6px;
+}
+@media (max-width: 700px) {
+  .live-layout {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'intro' 'route' 'brief';
+  }
+}

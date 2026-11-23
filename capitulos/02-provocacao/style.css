@@ -1,0 +1,80 @@
+.provocation {
+  background: #261e1b;
+  color: #f4ece0;
+  --muted: #e0c8b9;
+  --line: #806d64;
+}
+
+.provocation h2 {
+  max-width: 19ch;
+  font-size: clamp(47px, 7.1vw, 110px);
+}
+
+.provocation em {
+  font: italic 400 1.12em/0.9 var(--reading);
+  color: #ff9d87;
+}
+
+.evidence {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: clamp(21px, 7vw, 115px);
+  align-items: end;
+  margin-top: clamp(26px, 7vh, 85px);
+}
+
+.evidence dl {
+  margin: 0;
+  border-block: 1px solid var(--line);
+}
+.evidence dl div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3px 10px;
+  align-items: baseline;
+  padding: 10px 0;
+}
+.evidence dl div + div {
+  border-top: 1px solid var(--line);
+}
+.evidence dt {
+  font: 500 13px var(--mono);
+  color: var(--muted);
+}
+.evidence dd {
+  margin: 0;
+  font-weight: 700;
+}
+.evidence dl div:first-child dd {
+  text-decoration: line-through;
+  text-decoration-color: #ff9d87;
+  text-decoration-thickness: 2px;
+}
+.evidence-note p + p {
+  margin-top: 11px;
+  color: #ffac98;
+}
+
+@media (max-width: 680px) {
+  .evidence {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .presenting .provocation .evidence dl div + div {
+    animation: show-evidence 300ms 100ms ease-out both;
+  }
+
+  @keyframes show-evidence {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

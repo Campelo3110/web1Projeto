@@ -1,0 +1,145 @@
+.cover {
+  --cover-red: #9d2e25;
+  background: #e9e2d4;
+  color: #24211e;
+}
+
+.cover .frame {
+  min-height: calc(100svh - var(--rail) - 1px);
+  padding-block: clamp(18px, 4vh, 40px);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.cover-top,
+.cover-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+  font: 500 clamp(13px, 1.4vw, 18px) var(--mono);
+}
+
+.cover-top {
+  padding-bottom: 13px;
+  border-bottom: 1px solid currentColor;
+}
+.cover-bottom {
+  padding-top: 13px;
+  border-top: 1px solid currentColor;
+}
+.cover-bottom p {
+  font: italic clamp(20px, 3vw, 45px)/1.1 var(--reading);
+}
+.cover-bottom a {
+  white-space: nowrap;
+  color: var(--cover-red);
+}
+
+.cover-center {
+  align-self: center;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(195px, 31%);
+  align-items: end;
+  gap: clamp(14px, 4vw, 70px);
+  padding-block: clamp(21px, 6vh, 60px);
+}
+
+.cover h1 {
+  margin: 0;
+  font: 800 clamp(90px, min(19vw, 29vh), 318px)/0.79 var(--display);
+  letter-spacing: -0.07em;
+}
+
+.cover h1 > span {
+  display: block;
+}
+.cover-period {
+  color: var(--cover-red);
+}
+
+.cover-diagram {
+  display: grid;
+  margin: 0 0 5% 0;
+  padding: 6% 0 0 6%;
+  border: 1px solid var(--cover-red);
+  color: var(--cover-red);
+  font: 700 clamp(18px, 2.7vw, 39px)/1 var(--display);
+}
+
+.cover-diagram span {
+  position: relative;
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  align-items: baseline;
+  gap: 8px;
+  padding: clamp(7px, 1.3vw, 17px) 8px;
+  border-top: 1px solid var(--cover-red);
+  border-left: 1px solid var(--cover-red);
+}
+
+.cover-diagram span:nth-child(2) {
+  margin-left: 9%;
+}
+.cover-diagram span:nth-child(3) {
+  margin-left: 18%;
+  background: var(--cover-red);
+  color: #fff3e8;
+}
+.cover-diagram i {
+  font: 500 12px var(--mono);
+}
+
+@media (max-width: 730px) {
+  .cover-center {
+    grid-template-columns: 1fr;
+  }
+  .cover h1 {
+    font-size: clamp(72px, 22vw, 140px);
+  }
+  .cover-diagram {
+    width: min(68%, 330px);
+    justify-self: end;
+    margin: 0;
+  }
+}
+
+@media (max-width: 430px) {
+  .cover-top {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .cover-bottom {
+    flex-wrap: wrap;
+  }
+}
+
+.cover .frame {
+  grid-template-rows: auto 1fr auto auto;
+}
+#talk-plan-open {
+  width: fit-content;
+  padding: 4px 0;
+  margin-top: 7px;
+  border: 0;
+  background: transparent;
+  color: var(--cover-red);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font: 500 14px var(--mono);
+}
+
+.talk-plan {
+  font-size: 17px;
+}
+.talk-plan ol {
+  padding-left: 0;
+  list-style: none;
+}
+.talk-plan li {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+}
+.talk-plan p {
+  margin-bottom: 0;
+}
