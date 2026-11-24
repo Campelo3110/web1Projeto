@@ -1,6 +1,25 @@
 #revisao {
   background: #ede5d7;
 }
+.security-bridge {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-weight: 700;
+}
+.security-advice {
+  max-width: 70ch;
+  margin-top: 18px;
+  padding-block: 12px;
+  border-block: 1px solid var(--accent);
+}
+.speaker-notes {
+  margin-top: 14px;
+  font-size: 0.75em;
+}
+.speaker-notes summary {
+  cursor: pointer;
+  color: var(--muted);
+}
 .security .frame {
   padding-block: clamp(18px, 3.2vh, 42px);
 }

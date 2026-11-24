@@ -34,7 +34,7 @@
 #conceito .frame {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  grid-template-areas: 'chapter chapter' 'intro intro' 'cycle cycle' 'photo human' 'photo assistant' 'photo verify';
+  grid-template-areas: "chapter chapter" "intro intro" "cycle cycle" "photo human" "photo assistant" "photo verify";
   column-gap: clamp(14px, 3vw, 45px);
   row-gap: 10px;
 }
@@ -74,14 +74,14 @@
   line-height: 1.4;
 }
 .cycle span + span::before {
-  content: '→';
+  content: "→";
   margin-right: 12px;
   font-weight: 500;
 }
 @media (max-width: 700px) {
   #conceito .frame {
     grid-template-columns: 1fr;
-    grid-template-areas: 'chapter' 'intro' 'cycle' 'photo' 'human' 'assistant' 'verify';
+    grid-template-areas: "chapter" "intro" "cycle" "photo" "human" "assistant" "verify";
   }
   .method-intro {
     grid-template-columns: 1fr;

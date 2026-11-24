@@ -1,82 +1,50 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Revisão e segurança / Vibe Coding</title>
-    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../../base.css" />
     <link rel="stylesheet" href="style.css" />
     <script src="../../capitulo.js" defer></script>
   </head>
   <body class="chapter-page">
-    <a class="back-to-deck" href="../../index.html#revisao" hidden>Voltar à apresentação</a>
+    <a class="back-to-deck" href="../../index.html#revisao" hidden
+      >Voltar à apresentação</a
+    >
     <main>
       <section class="slide security" id="revisao" aria-labelledby="revisar">
         <div class="frame">
-          <header class="security-heading">
-            <p class="chapter">11 / Revisão e segurança</p>
-            <h2 id="revisar">O navegador não é cofre.</h2>
-            <p class="lead">
-              Tudo que a página recebe pode ser visto por quem a abre. Senhas e chaves privadas
-              precisam ficar no servidor, e o banco também precisa conferir quem pode acessar cada
-              dado.
+          <p class="chapter">08 / Segurança de aplicações</p>
+          <p class="security-bridge">Seu site funciona. Mas é seguro?</p>
+          <h2 id="revisar">Proteção de dados no site</h2>
+          <article class="incident">
+            <p class="incident-label">Um caso real: Moltbook, 2026</p>
+            <p>
+              Pesquisadores encontraram uma chave no JavaScript público e regras
+              de acesso ausentes no banco. Segundo o
+              <a
+                href="https://timesbrasil.com.br/empresas-e-negocios/tecnologia-e-inovacao/levantamento-aponta-falhas-graves-no-moltbook-e-questiona-autonomia-de-seus-agentes/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Times Brasil</a
+              >, a exposição envolveu cerca de 1,5 milhão de chaves de
+              autenticação de agentes, 35 mil e-mails e mensagens privadas.
             </p>
-          </header>
-
-          <div class="security-story">
-            <figure class="server-photo">
-              <img
-                src="imagens/sala-servidores.jpg"
-                width="960"
-                height="1440"
-                alt="Racks de servidores e equipamentos de rede em um centro de pesquisa"
-                loading="lazy"
-              />
-              <figcaption>
-                Racks no centro de pesquisa TRIUMF, Canadá ·
-                <a href="https://unsplash.com/photos/two-server-racks-filled-with-electronic-components-and-wires-k27hkqXuveo" target="_blank" rel="noopener noreferrer">Eric Stoynov</a>
-                · <a href="https://unsplash.com/license" target="_blank" rel="noopener noreferrer">Licença Unsplash</a>
-              </figcaption>
-            </figure>
-            <article class="incident">
-              <p class="incident-label">Um caso real · Moltbook · 2026</p>
-              <h3>Uma configuração deixou o banco aberto.</h3>
-              <p>
-                Pesquisadores encontraram uma chave no JavaScript público do site e regras de acesso
-                ausentes no banco. A exposição incluiu cerca de 1,5 milhão de chaves de autenticação de agentes,
-                35 mil e-mails e mensagens privadas.
-              </p>
-              <a href="https://timesbrasil.com.br/empresas-e-negocios/tecnologia-e-inovacao/levantamento-aponta-falhas-graves-no-moltbook-e-questiona-autonomia-de-seus-agentes/" target="_blank" rel="noopener noreferrer">
-                Leia a notícia no Times Brasil
-              </a>
-            </article>
-          </div>
-
-          <div class="security-flow" aria-label="Onde cada coisa deve ficar">
-            <div>
-              <strong>No navegador</strong>
-              <span>Interface e chaves públicas, se necessárias</span>
-            </div>
-            <span class="flow-arrow" aria-hidden="true">→</span>
-            <div>
-              <strong>No servidor</strong>
-              <span>Senhas, chaves privadas e validações</span>
-            </div>
-            <span class="flow-arrow" aria-hidden="true">→</span>
-            <div>
-              <strong>No banco</strong>
-              <span>Permissões conferidas em cada pedido</span>
-            </div>
-          </div>
-
-          <div class="security-checks">
-            <p><strong>Revise a função:</strong> teste a lista, o filtro, o teclado e uma tela de 360 px.</p>
-            <p><strong>Proteja segredos:</strong> procure chaves em HTML, JavaScript e no histórico do Git.</p>
-            <p><strong>Teste permissões:</strong> confira o acesso sem login; troque qualquer chave privada exposta.</p>
-          </div>
-          <p class="security-note">
-            <strong>Importante:</strong> algumas chaves públicas podem aparecer no navegador por projeto. Elas não substituem autenticação nem regras de acesso no servidor e no banco.
+          </article>
+          <p class="security-advice">
+            Guarde chaves privadas no servidor, limite o acesso aos dados e
+            teste as permissões sem entrar na conta.
           </p>
+          <details class="speaker-notes">
+            <summary>Notas do apresentador</summary>
+            <p>
+              Uma chave pública pode aparecer no navegador quando o serviço foi
+              projetado para isso. O risco depende das permissões e das regras
+              de acesso no banco. Não confunda chave pública com senha ou chave
+              privada.
+            </p>
+          </details>
         </div>
       </section>
     </main>

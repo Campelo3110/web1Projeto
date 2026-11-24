@@ -1,0 +1,35 @@
+.timeline {
+  list-style: none;
+  max-width: 70ch;
+  margin: 22px 0;
+  padding: 0 0 0 22px;
+  border-left: 2px solid var(--accent);
+}
+.timeline li {
+  position: relative;
+  padding: 0 0 20px 12px;
+}
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -29px;
+  top: 7px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.timeline time {
+  color: var(--accent);
+  font-weight: 700;
+}
+.term-source,
+.term-bridge {
+  font-size: 0.82em;
+}
+.term-bridge {
+  max-width: 70ch;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}

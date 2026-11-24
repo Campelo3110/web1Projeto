@@ -4,7 +4,7 @@
 .setup-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  grid-template-areas: 'title title' 'files photo' 'notes notes';
+  grid-template-areas: "title title" "files photo" "notes notes";
   gap: clamp(14px, 3vw, 49px);
 }
 .setup-notes {
@@ -70,7 +70,7 @@
 @media (max-width: 700px) {
   .setup-layout {
     grid-template-columns: 1fr;
-    grid-template-areas: 'title' 'files' 'photo' 'notes';
+    grid-template-areas: "title" "files" "photo" "notes";
   }
   .setup-photo img {
     height: auto;

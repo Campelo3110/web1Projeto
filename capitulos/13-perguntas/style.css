@@ -18,14 +18,9 @@
   color: #ffac8e;
   font: italic 400 1.03em/0.85 var(--reading);
 }
-.conclusion .lead,
-.closing-question {
+.conclusion .lead {
   margin-inline: auto;
   max-width: 56ch;
-}
-.closing-question {
-  margin-top: 10px;
-  font-weight: 700;
 }
 .references {
   max-width: 650px;

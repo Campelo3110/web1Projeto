@@ -1,182 +1,211 @@
-const links = Array.from(document.querySelectorAll('#index-links a'))
-const main = document.querySelector('#conteudo')
-const index = document.querySelector('#index')
-const previous = document.querySelector('#previous')
-const next = document.querySelector('#next')
-const position = document.querySelector('#position')
-const progress = document.querySelector('#progress')
-const present = document.querySelector('#present')
-const fullscreen = document.querySelector('#fullscreen')
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
-const frames = []
-let current = 0
-let presenting = true
-
-for (const link of links) {
-  const frame = document.createElement('iframe')
-  frame.title = link.textContent
-  frame.hidden = true
-  main.append(frame)
-  frames.push(frame)
-
-  link.addEventListener('click', (event) => {
-    event.preventDefault()
-    index.close()
-    goTo(links.indexOf(link))
-  })
-
-  frame.addEventListener('load', () => sizeChapter(frame))
-}
+const chapters = [
+  {
+    id: "capa",
+    title: "Início",
+    src: "capitulos/01-capa/index.html",
+    phase: "pedir",
+  },
+  {
+    id: "provocacao",
+    title: "A pergunta inicial",
+    src: "capitulos/02-provocacao/index.html",
+    phase: "pedir",
+  },
+  {
+    id: "sociedade",
+    title: "Internet e Sociedade",
+    src: "capitulos/02-sociedade/index.html",
+    phase: "conferir",
+  },
+  {
+    id: "termo",
+    title: "De onde veio o termo",
+    src: "capitulos/03-termo/index.html",
+    phase: "conferir",
+  },
+  {
+    id: "abordagens",
+    title: "Abordagens e ferramentas",
+    src: "capitulos/04-abordagens/index.html",
+    phase: "construir",
+  },
+  {
+    id: "conceito",
+    title: "Como funciona o Vibe Coding",
+    src: "capitulos/03-conceito/index.html",
+    phase: "construir",
+  },
+  {
+    id: "ambiente",
+    title: "Preparar o projeto",
+    src: "capitulos/05-ambiente/index.html",
+    phase: "construir",
+  },
+  {
+    id: "prompt",
+    title: "O primeiro pedido",
+    src: "capitulos/06-prompt/index.html",
+    phase: "pedir",
+  },
+  {
+    id: "revisao",
+    title: "Segurança",
+    src: "capitulos/11-revisao/index.html",
+    phase: "conferir",
+  },
+  {
+    id: "publicacao",
+    title: "Conferir e publicar",
+    src: "capitulos/12-publicacao/index.html",
+    phase: "conferir",
+  },
+  {
+    id: "perguntas",
+    title: "Conclusão",
+    src: "capitulos/13-perguntas/index.html",
+    phase: "conferir",
+  },
+];
+const main = document.querySelector("#conteudo");
+const phases = Array.from(
+  document.querySelectorAll(".phase-marker [data-phase]"),
+);
+const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
+const frames = new Map();
+const sections = chapters.map((chapter) => {
+  const section = document.createElement("section");
+  section.id = chapter.id;
+  section.className = "page-section";
+  section.dataset.phase = chapter.phase;
+  const frame = document.createElement("iframe");
+  frame.title = chapter.title;
+  frame.src = chapter.src;
+  section.append(frame);
+  main.append(section);
+  frames.set(frame.contentWindow, frame);
+  frame.addEventListener("load", () => sizeChapter(frame));
+  return section;
+});
+let current = 0;
 
 function sizeChapter(frame) {
-  const height = window.innerHeight - main.getBoundingClientRect().top - window.scrollY
+  const headerHeight = document
+    .querySelector(".site-header")
+    .getBoundingClientRect().height;
+  document.documentElement.style.setProperty(
+    "--site-header-height",
+    headerHeight + "px",
+  );
+  const panelHeight = Math.max(320, window.innerHeight - headerHeight);
+  frame.style.height =
+    Math.max(panelHeight, Number(frame.dataset.contentHeight) || 0) + "px";
   frame.contentWindow.postMessage(
-    { type: 'viewport', height: Math.max(0, height), presenting },
-    '*'
-  )
+    { type: "viewport", height: panelHeight, presenting: false },
+    "*",
+  );
 }
 
-function loadChapter(number) {
-  const frame = frames[number]
-  if (!frame.hasAttribute('src')) frame.src = links[number].href
-  frame.hidden = false
-  sizeChapter(frame)
+function setCurrent(index) {
+  current = Math.max(0, Math.min(index, sections.length - 1));
+  const active = sections[current];
+  phases.forEach((phase) =>
+    phase.dataset.phase === active.dataset.phase
+      ? phase.setAttribute("aria-current", "step")
+      : phase.removeAttribute("aria-current"),
+  );
+  navLinks.forEach((link) =>
+    link.hash === "#" + active.id
+      ? link.setAttribute("aria-current", "location")
+      : link.removeAttribute("aria-current"),
+  );
+  document.querySelector("#previous").disabled = current === 0;
+  document.querySelector("#next").disabled = current === sections.length - 1;
 }
 
-function updatePosition(number) {
-  current = number
-  position.textContent = number + 1 + ' / ' + links.length
-  progress.value = number + 1
-  previous.disabled = number === 0
-  next.disabled = number === links.length - 1
-
-  for (const [step, link] of links.entries()) {
-    if (step === number) link.setAttribute('aria-current', 'location')
-    else link.removeAttribute('aria-current')
-  }
+function goTo(index) {
+  const target = Math.max(0, Math.min(index, sections.length - 1));
+  sections[target].scrollIntoView({ behavior: "smooth", block: "start" });
+  history.replaceState(null, "", "#" + sections[target].id);
+  setCurrent(target);
 }
 
-function goTo(number, focus = true) {
-  if (number < 0 || number >= links.length) return
+document
+  .querySelector("#previous")
+  .addEventListener("click", () => goTo(current - 1));
+document
+  .querySelector("#next")
+  .addEventListener("click", () => goTo(current + 1));
+document
+  .querySelector("#fullscreen")
+  .addEventListener("click", async (event) => {
+    if (document.fullscreenElement) await document.exitFullscreen();
+    else await document.documentElement.requestFullscreen();
+    event.currentTarget.setAttribute(
+      "aria-pressed",
+      String(Boolean(document.fullscreenElement)),
+    );
+  });
 
-  const active = frames[number]
-  updatePosition(number)
-  history.replaceState(null, '', '#' + links[number].dataset.id)
+document.addEventListener("fullscreenchange", () => {
+  const button = document.querySelector("#fullscreen");
+  button.setAttribute(
+    "aria-pressed",
+    String(Boolean(document.fullscreenElement)),
+  );
+  button.textContent = document.fullscreenElement
+    ? "Sair da tela cheia"
+    : "Tela cheia";
+});
 
-  if (presenting) {
-    for (const frame of frames) frame.hidden = frame !== active
-    loadChapter(number)
-    window.scrollTo({ top: 0, behavior: 'instant' })
-  } else {
-    active.scrollIntoView({ behavior: reducedMotion.matches ? 'instant' : 'smooth' })
-  }
+const observer = new IntersectionObserver(
+  (entries) => {
+    const visible = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+    if (!visible.length) return;
+    const index = sections.indexOf(visible[0].target);
+    setCurrent(index);
+  },
+  { rootMargin: "-12% 0px -68% 0px", threshold: [0, 0.2, 0.5, 0.8] },
+);
+sections.forEach((section) => observer.observe(section));
 
-  if (focus) active.focus({ preventScroll: true })
-}
-
-function togglePresentation() {
-  presenting = !presenting
-  present.setAttribute('aria-pressed', String(presenting))
-  present.textContent = presenting ? 'Modo leitura' : 'Apresentar'
-
-  if (!presenting) {
-    for (const [number] of frames.entries()) loadChapter(number)
-  }
-  goTo(current)
-}
-
-function useArrow(key) {
-  if (index.open) return false
-  if (key === 'ArrowRight' || key === 'ArrowLeft') {
-    goTo(current + (key === 'ArrowRight' ? 1 : -1))
-    return true
-  }
+window.addEventListener("message", (event) => {
+  const frame = frames.get(event.source);
   if (
-    presenting &&
-    key === 'ArrowDown' &&
-    window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2
-  ) {
-    goTo(current + 1)
-    return true
-  }
-  if (presenting && key === 'ArrowUp' && window.scrollY <= 1) {
-    goTo(current - 1)
-    return true
-  }
-  return false
-}
-
-window.addEventListener('message', (event) => {
-  const frame = frames.find((item) => item.contentWindow === event.source)
-  if (!frame || !event.data) return
-
-  if (
-    event.data.type === 'chapter-height' &&
+    frame &&
+    event.data?.type === "chapter-height" &&
     Number.isFinite(event.data.height) &&
     event.data.height > 0
   ) {
-    const height = Math.ceil(event.data.height) + 'px'
-    if (frame.style.height !== height) frame.style.height = height
+    frame.dataset.contentHeight = String(Math.ceil(event.data.height));
+    const headerHeight = document
+      .querySelector(".site-header")
+      .getBoundingClientRect().height;
+    const panelHeight = Math.max(320, window.innerHeight - headerHeight);
+    frame.style.height =
+      Math.max(panelHeight, Math.ceil(event.data.height)) + "px";
   }
-  if (event.data.type === 'chapter-link') {
-    const number = links.findIndex((link) => link.dataset.id === event.data.id)
-    goTo(number)
+  if (event.data?.type === "chapter-link") {
+    const index = sections.findIndex((section) => section.id === event.data.id);
+    if (index >= 0) goTo(index);
   }
-  if (!frame.hidden && event.data.type === 'chapter-key') useArrow(event.data.key)
-})
-
-window.addEventListener('resize', () => {
-  for (const frame of frames) if (!frame.hidden) sizeChapter(frame)
-})
-
-window.addEventListener(
-  'scroll',
-  () => {
-    if (presenting) return
-    let number = 0
-    for (const [step, frame] of frames.entries()) {
-      if (frame.getBoundingClientRect().top <= window.innerHeight * 0.3) number = step
-    }
-    if (number !== current) {
-      updatePosition(number)
-      history.replaceState(null, '', '#' + links[number].dataset.id)
-    }
-  },
-  { passive: true }
-)
-
-document.addEventListener('keydown', (event) => {
-  if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return
-  if (useArrow(event.key)) event.preventDefault()
-})
-
-function followHash() {
-  const number = links.findIndex((link) => '#' + link.dataset.id === location.hash)
-  goTo(number < 0 ? 0 : number, false)
-}
-
-window.addEventListener('hashchange', followHash)
-document.querySelector('#open-index').addEventListener('click', () => index.showModal())
-previous.addEventListener('click', () => goTo(current - 1))
-next.addEventListener('click', () => goTo(current + 1))
-present.addEventListener('click', togglePresentation)
-
-if (!document.fullscreenEnabled) fullscreen.hidden = true
-
-fullscreen.addEventListener('click', async () => {
-  try {
-    if (document.fullscreenElement) await document.exitFullscreen()
-    else await document.documentElement.requestFullscreen()
-  } catch {
-    fullscreen.textContent = 'Tela cheia indisponível'
-  }
-})
-
-document.addEventListener('fullscreenchange', () => {
-  const active = Boolean(document.fullscreenElement)
-  fullscreen.setAttribute('aria-pressed', String(active))
-  fullscreen.textContent = active ? 'Sair da tela cheia' : 'Tela cheia'
-})
-
-progress.max = links.length
-followHash()
+});
+window.addEventListener("resize", () => frames.forEach(sizeChapter));
+window.addEventListener("hashchange", () => {
+  const index = sections.findIndex(
+    (section) => "#" + section.id === location.hash,
+  );
+  if (index >= 0) setCurrent(index);
+});
+document.addEventListener("keydown", (event) => {
+  if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+  if (event.key === "ArrowRight") goTo(current + 1);
+  if (event.key === "ArrowLeft") goTo(current - 1);
+});
+const initial = sections.findIndex(
+  (section) => "#" + section.id === location.hash,
+);
+if (initial >= 0)
+  sections[initial].scrollIntoView({ behavior: "instant", block: "start" });
+setCurrent(initial < 0 ? 0 : initial);

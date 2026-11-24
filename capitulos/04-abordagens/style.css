@@ -4,6 +4,27 @@
 .approaches h2 {
   max-width: none;
 }
+.approach-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(210px, 0.65fr);
+  align-items: center;
+  gap: clamp(15px, 3vw, 32px);
+}
+.approach-photo {
+  min-width: 0;
+  margin: 0;
+}
+.approach-photo img {
+  display: block;
+  width: 100%;
+  height: clamp(180px, 24vw, 300px);
+  object-fit: cover;
+}
+.approach-photo figcaption {
+  margin-top: 5px;
+  font-size: 0.65em;
+  line-height: 1.3;
+}
 .approach-matrix {
   margin-top: clamp(15px, 3.9vh, 35px);
 }
@@ -75,5 +96,14 @@
   }
   .tool-list li {
     width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .approach-layout {
+    grid-template-columns: 1fr;
+  }
+  .approach-photo img {
+    height: 180px;
   }
 }

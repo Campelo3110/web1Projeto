@@ -7,7 +7,7 @@
 .society-story {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.12fr);
-  grid-template-areas: 'title photo' 'notes photo' 'source source';
+  grid-template-areas: "title photo" "notes photo" "source source";
   align-items: start;
   gap: 11px clamp(14px, 5vw, 76px);
 }
@@ -68,7 +68,7 @@
 @media (max-width: 700px) {
   .society-story {
     grid-template-columns: 1fr;
-    grid-template-areas: 'title' 'photo' 'notes' 'source';
+    grid-template-areas: "title" "photo" "notes" "source";
     gap: 12px;
   }
   .society h2 {

@@ -1,6 +1,11 @@
 #publicacao {
   background: #f5eee1;
 }
+.answer-to-question {
+  margin-top: 0;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+}
 .release-layout {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);

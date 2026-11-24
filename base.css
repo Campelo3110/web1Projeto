@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+:root {
+  --paper: #f4efe5;
+  --ink: #27221d;
+  --accent: #9d2e25;
+  --line: #a79b8b;
+  --muted: #62574d;
+  --display: "Archivo", Arial, sans-serif;
+  --body: "DM Sans", Arial, sans-serif;
+  --reading: var(--body);
+  --mono: "IBM Plex Mono", "Courier New", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+[hidden] {
+  display: none !important;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 clamp(17px, 1.45vw, 23px)/1.47 var(--body);
+}
+a {
+  color: inherit;
+  text-underline-offset: 0.19em;
+}
+button,
+textarea {
+  color: inherit;
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: default;
+}
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+.slide:focus {
+  outline: none;
+}
+.skip {
+  position: fixed;
+  z-index: 10;
+  top: -6rem;
+  left: 1rem;
+  padding: 8px 12px;
+  background: var(--paper);
+  color: var(--ink);
+}
+.skip:focus {
+  top: 6px;
+}
+dialog {
+  width: min(640px, calc(100% - 30px));
+  max-height: 85dvh;
+  padding: 20px;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+}
+dialog::backdrop {
+  background: rgb(35 26 20 / 74%);
+}
+dialog h2 {
+  font-size: clamp(32px, 5vw, 55px);
+}
+dialog p {
+  margin: 7px 0 13px;
+  font-size: 16px;
+}
+dialog button {
+  min-height: 32px;
+  padding: 5px 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  font: 500 13px/1.15 var(--mono);
+}
+dialog button:hover {
+  border-color: currentColor;
+}
+.slide {
+  display: grid;
+  min-height: calc(100svh - var(--rail, 0px));
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+.frame {
+  width: min(100% - clamp(32px, 10vw, 175px), 1420px);
+  min-width: 0;
+  margin: 0 auto;
+  padding: clamp(22px, 4.8vh, 65px) 0;
+}
+.dark {
+  background: #28221e;
+  color: #fbefe2;
+  --line: #88776b;
+  --muted: #ead7c5;
+}
+.chapter,
+.small {
+  font: 700 clamp(13px, 1.08vw, 16px)/1.4 var(--body);
+  letter-spacing: -0.02em;
+}
+.chapter {
+  margin: 0 0 clamp(14px, 2.7vh, 28px);
+  color: var(--muted);
+}
+h1,
+h2,
+h3,
+p,
+blockquote,
+pre,
+dl {
+  margin-top: 0;
+}
+h2 {
+  max-width: 23ch;
+  margin-bottom: 0;
+  font: 800 clamp(36px, 4.95vw, 80px)/0.98 var(--display);
+  letter-spacing: -0.045em;
+}
+p {
+  margin-bottom: 0;
+}
+.lead {
+  max-width: 55ch;
+  margin-top: 0.75em;
+}
+code,
+pre {
+  font-family: var(--mono);
+}
+code {
+  overflow-wrap: anywhere;
+}
+.ordered {
+  margin: 1em 0 0;
+  padding-left: 1.2em;
+}
+.ordered li {
+  padding: 0 0 0.5em 0.25em;
+}
+.console {
+  min-width: 0;
+  background: #29231f;
+  color: #fbefe0;
+}
+.console pre {
+  margin: 0;
+  padding: 13px;
+  font: 400 clamp(14px, 1.22vw, 19px)/1.47 var(--mono);
+  white-space: pre-wrap;
+  tab-size: 2;
+  overflow-wrap: anywhere;
+}
+.console pre code {
+  display: block;
+  white-space: inherit;
+  tab-size: inherit;
+}
+.console-bar button,
+.console-run button {
+  min-height: 38px;
+  padding: 5px 10px;
+  font: 500 14px var(--mono);
+}
+.chapter-page .slide {
+  min-height: var(--chapter-height, 100svh);
+}
+.chapter-page .cover .frame {
+  min-height: calc(var(--chapter-height, 100svh) - 1px);
+}
+.chapter-page.reading .slide {
+  min-height: var(--chapter-panel-height, 100svh);
+}
+.chapter-page.reading .frame {
+  padding-block: clamp(30px, 4vw, 60px);
+}
+.chapter-page.reading .cover .frame {
+  min-height: var(--chapter-panel-height, 100svh);
+  padding-block: clamp(18px, 4vw, 40px);
+}
+.back-to-deck {
+  display: block;
+  padding: 8px 5vw;
+  background: var(--ink);
+  color: var(--paper);
+  font: 500 14px var(--mono);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

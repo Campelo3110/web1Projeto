@@ -33,7 +33,7 @@
 .prompt-switch button + button {
   border-left: 1px solid #ad9385;
 }
-.prompt-switch button[aria-pressed='true'] {
+.prompt-switch button[aria-pressed="true"] {
   background: #f3ccb6;
   color: #2c211b;
 }
